@@ -85,7 +85,7 @@ if __name__ == '__main__':
     TRAIN_SIZE = args.train_size
     TEST_SIZE = args.test_size
 
-    raw_dataset = load_dataset('Jiayi-Pan/Countdown-Tasks-3to4', split='train')
+    raw_dataset = load_dataset('PengFeiChen/Countdown-Tasks-3to4', split='train')
 
     assert len(raw_dataset) > TRAIN_SIZE + TEST_SIZE
     train_dataset = raw_dataset.select(range(TRAIN_SIZE))
