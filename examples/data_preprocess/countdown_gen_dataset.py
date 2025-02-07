@@ -49,7 +49,7 @@ def gen_dataset(
         samples.append((target, numbers))
     
     # Convert to Hugging Face Dataset and save as Parquet
-    dataset = Dataset.from_dict({"target": [s[0] for s in samples], "numbers": [s[1] for s in samples]})
+    dataset = Dataset.from_dict({"target": [s[0] for s in samples], "nums": [s[1] for s in samples]})
     dataset.to_parquet(save_path)
     
     # Upload to Hugging Face if required
