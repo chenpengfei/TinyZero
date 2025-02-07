@@ -5,21 +5,8 @@ source ~/miniconda3/bin/activate
 echo 'export PATH="$HOME/miniconda3/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 
-
-# -1 install wandb
-pip install wandb
-wandb login
-# TinyZero-Qwen2.5-7B: 19fffff6dedf30d8f82534a9cb9f55f639a1839f
-
-# 0 download base model
-mkdir -p /lpai/models
-apt-get update
-apt-get install git-lfs
-git clone https://huggingface.co/Qwen/Qwen2.5-7B /lpai/models/Qwen2.5-7B
-
 # 1 Installation
 conda create -n zero python=3.9
-
 # install torch [or you can skip this step and let vllm to install the correct version for you]
 pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu121
 # install vllm
@@ -41,8 +28,17 @@ conda activate zero
 mkdir -p /lpai/dataset/countdown
 python ./examples/data_preprocess/countdown.py --local_dir /lpai/datasets/countdown
 
+
 # 3 Run Training
 conda activate zero
+
+# install wandb
+wandb login
+
+# download base model
+pip install huggingface_hub
+huggingface-cli download --resume-download Qwen/Qwen2.5-7B --local-dir /lpai/models/Qwen2.5-7B
+
 
 # 3B+ model, In this case, the base model is able to develop sophisticated reasoning skills.
 export N_GPUS=2
