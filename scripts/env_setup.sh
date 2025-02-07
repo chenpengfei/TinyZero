@@ -18,10 +18,10 @@ apt-get install git-lfs
 git clone https://huggingface.co/Qwen/Qwen2.5-7B /lpai/models/Qwen2.5-7B
 
 # 1 Installation
-conda create -n zero
+conda create -n zero python=3.9
 
 # install torch [or you can skip this step and let vllm to install the correct version for you]
-pip install torch==24.12
+pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu121
 # install vllm
 pip3 install vllm==0.6.3 # or you can install 0.5.4, 0.4.2 and 0.3.1
 pip3 install ray
