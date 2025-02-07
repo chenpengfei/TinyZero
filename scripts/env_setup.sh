@@ -1,3 +1,11 @@
+# -2 install conda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+source ~/miniconda3/bin/activate
+echo 'export PATH="$HOME/miniconda3/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+
+
 # -1 install wandb
 pip install wandb
 wandb login
@@ -39,7 +47,7 @@ conda activate zero
 # 3B+ model, In this case, the base model is able to develop sophisticated reasoning skills.
 export N_GPUS=2
 export BASE_MODEL=/lpai/models/Qwen2.5-7B
-export DATA_DIR=/lpai/dataset/countdown
+export DATA_DIR=/lpai/datasets/countdown
 export ROLLOUT_TP_SIZE=2
 export EXPERIMENT_NAME=countdown-qwen2.5-7b
 export VLLM_ATTENTION_BACKEND=XFORMERS
