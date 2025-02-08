@@ -37,15 +37,15 @@ wandb login
 
 # download base model
 pip install huggingface_hub
-huggingface-cli download --resume-download Qwen/Qwen2.5-7B --local-dir /lpai/models/Qwen2.5-7B
+huggingface-cli download --resume-download Qwen/Qwen2.5-3B --local-dir /lpai/models/Qwen2.5-3B
 
 
 # 3B+ model, In this case, the base model is able to develop sophisticated reasoning skills.
 export N_GPUS=2
-export BASE_MODEL=/lpai/models/Qwen2.5-7B
+export BASE_MODEL=/lpai/models/Qwen2.5-3B
 export DATA_DIR=/lpai/datasets/countdown
 export ROLLOUT_TP_SIZE=2
-export EXPERIMENT_NAME=countdown-qwen2.5-7b
+export EXPERIMENT_NAME=countdown-qwen2.5-3B
 export VLLM_ATTENTION_BACKEND=XFORMERS
 
 bash ./scripts/train_tiny_zero.sh
