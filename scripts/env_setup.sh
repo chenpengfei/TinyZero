@@ -25,25 +25,22 @@ pip install wandb IPython matplotlib
 
 # Data Preparation
 conda activate zero
-mkdir -p /lpai/dataset/countdown
-python ./examples/data_preprocess/countdown.py --local_dir /lpai/datasets/countdown
+mkdir -p datasets/countdown
+python ./examples/data_preprocess/countdown.py --local_dir datasets/countdown
+
+# download base model
+pip install huggingface_hub
+huggingface-cli download --resume-download Qwen/Qwen2.5-3B --local-dir models/Qwen2.5-3B
 
 
 # 3 Run Training
 conda activate zero
-
-# install wandb
 wandb login
-
-# download base model
-pip install huggingface_hub
-huggingface-cli download --resume-download Qwen/Qwen2.5-3B --local-dir /lpai/models/Qwen2.5-3B
-
 
 # 3B+ model, In this case, the base model is able to develop sophisticated reasoning skills.
 export N_GPUS=2
-export BASE_MODEL=/lpai/models/Qwen2.5-3B
-export DATA_DIR=/lpai/datasets/countdown
+export BASE_MODEL=models/Qwen2.5-3B
+export DATA_DIR=datasets/countdown
 export ROLLOUT_TP_SIZE=2
 export EXPERIMENT_NAME=countdown-qwen2.5-3B
 export VLLM_ATTENTION_BACKEND=XFORMERS
