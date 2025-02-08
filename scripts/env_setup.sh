@@ -47,5 +47,6 @@ export DATA_DIR=/lpai/datasets/countdown
 export ROLLOUT_TP_SIZE=2
 export EXPERIMENT_NAME=countdown-qwen2.5-3B
 export VLLM_ATTENTION_BACKEND=XFORMERS
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
 bash ./scripts/train_tiny_zero.sh
